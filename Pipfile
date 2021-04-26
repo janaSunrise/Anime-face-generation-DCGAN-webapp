@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+torch = "==1.8.1"
+torchvision = "==0.9.1"
+streamlit = "*"
+
+[dev-packages]
+
+[scripts]
+start = "streamlit run app.py"
