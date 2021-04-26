@@ -34,7 +34,7 @@ def get_files_in_dir(directory):
 def generate_video(generated_location, save_filename):
     files = get_files_in_dir(generated_location)
 
-    # *"MP4V"
+    # *"MP4V" was planned to use for MP4, unfortunately browsers don't support it, Hence used VP80 for `.webm`
     out = cv2.VideoWriter(save_filename, cv2.VideoWriter_fourcc(*"VP80"), 1, (530, 530))
     [out.write(cv2.imread(fname)) for fname in files]
     out.release()
