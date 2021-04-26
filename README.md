@@ -1,6 +1,6 @@
 # Anime face generation DCGAN WebApp
 
-> A port of my Anime face generation using Pytorch into a Webapp
+> A port of my Anime face generation using Pytorch into a WebApp
 
 ## Installation and usage.
 

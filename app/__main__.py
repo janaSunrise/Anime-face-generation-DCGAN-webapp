@@ -9,6 +9,7 @@ from . import SAVE_DIR
 from .model import discriminator, generator
 from .utils import save_samples, get_files_in_dir, generate_video
 
+# Create the saving directory
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 # Load and evaluate models
@@ -18,9 +19,6 @@ discriminator.load_state_dict(torch.load("app/models/discriminator_model.bin", m
 # Finally, Evaluate them
 generator.eval()
 discriminator.eval()
-
-# -- Config the warnings -- #
-st.set_option('deprecation.showfileUploaderEncoding', False)
 
 # -- The views -- #
 st.title("Anime Art generation")
@@ -35,7 +33,7 @@ if __name__ == '__main__':
         video_range = st.sidebar.slider("How many video frames?", 3, 30, 5)
 
     if st.sidebar.button("Click here to generate!"):
-        with st.spinner("Generating..."):
+        with st.spinner(f"Generating {option}..."):
             if option == "image":
                 save_samples(generator)
                 filename = get_files_in_dir(SAVE_DIR)[0]
@@ -43,9 +41,9 @@ if __name__ == '__main__':
                 for idx in range(video_range):
                     save_samples(generator, idx)
 
-            time.sleep(1)
+            time.sleep(1.5)
 
-            st.success("Generation done!")
+            st.info("Generation done!")
             st.balloons()
 
             if option == "image":
