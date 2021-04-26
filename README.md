@@ -1,6 +1,6 @@
-# Anime face generation DCGAN Webapp
+# Anime face generation DCGAN WebApp
 
-> A port of my Anime face generation using Pytorch into an Webapp
+> A port of my Anime face generation using Pytorch into a Webapp
 
 ## Installation and usage.
 
@@ -10,9 +10,9 @@ installed on your system.
 Here's how to install the dependencies, and get started.
 
 - Install it using **`pipenv sync -d`**
-- Once done, spawn a shell to run the files: `pipenv shell`
+- Once done, run the webapp using **`pipenv run start`**
 
-And you're done, and you can run any of the files, and test them.
+And It'll start on Port 8501 by default, plus it opens the site too on webbrowser.
 
 ## Contributing
 
