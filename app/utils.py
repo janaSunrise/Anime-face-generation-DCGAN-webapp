@@ -10,11 +10,15 @@ def denorm(img_tensors):
     return img_tensors * STATS[1][0] + STATS[0][0]
 
 
-def save_samples(index, generator):
+def save_samples(generator, index=None):
     latent_tensors = torch.randn(64, LATENT_SIZE, 1, 1, device=torch.device('cpu'))
 
     fake_images = generator(latent_tensors)
-    fake_fname = 'generated-images-{0:0=4d}.png'.format(index)
+
+    if not index:
+        fake_fname = "generated-image.png"
+    else:
+        fake_fname = "generated-images-{0:0=4d}.png".format(index)
 
     save_image(denorm(fake_images), os.path.join(SAVE_DIR, fake_fname), nrow=8)
 
