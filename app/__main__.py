@@ -24,12 +24,18 @@ st.set_option('deprecation.showfileUploaderEncoding', False)
 
 # -- The views -- #
 st.title("Anime image generation")
-st.header("Anime face image generation using Deep Convolutional GANs")
+st.header("Anime face image and video generation using Deep Convolutional GANs")
 
 st.header("\n\n")
 
 if __name__ == '__main__':
-    if st.sidebar.button("Click here to generate images!"):
+    option = st.sidebar.selectbox("What do you want to generate?", ("Image", "Video")).lower()
+
+    video_range = None
+    if option == "video":
+        video_range = st.sidebar.slider("How many video frames?", 3, 30, 5)
+
+    if st.sidebar.button("Click here to generate!"):
         with st.spinner("Generating..."):
             save_samples(generator)
             filename = get_files_in_dir(SAVE_DIR)[0]
