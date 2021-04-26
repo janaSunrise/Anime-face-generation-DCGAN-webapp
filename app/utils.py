@@ -1,5 +1,6 @@
 import os
 
+import cv2
 import torch
 from torchvision.utils import save_image
 
@@ -28,3 +29,12 @@ def get_files_in_dir(directory):
     files.sort()
 
     return files
+
+
+def generate_video(generated_location, save_filename):
+    files = get_files_in_dir(generated_location)
+
+    # *"MP4V"
+    out = cv2.VideoWriter(save_filename, cv2.VideoWriter_fourcc(*"VP80"), 1, (530, 530))
+    [out.write(cv2.imread(fname)) for fname in files]
+    out.release()

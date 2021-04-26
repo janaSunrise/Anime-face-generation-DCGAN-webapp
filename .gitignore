@@ -31,3 +31,9 @@ logs/
 .DS_STORE
 
 generated/
+
+# Media files
+*.avi
+*.mp4
+*.mp3
+*.webm
