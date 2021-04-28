@@ -33,7 +33,7 @@ if __name__ == '__main__':
         video_range = st.sidebar.slider("How many video frames?", 3, 30, 5)
     else:
         st.sidebar.markdown("**Note that the image might be a bit broken due to the shape customization.**")
-        image_grids = st.sidebar.slider("How many image grids?", 1, 12, 6)
+        image_grids = st.sidebar.slider("How many image grids?", 1, 12, 8)
 
     if st.sidebar.button("Click here to generate!"):
         with st.spinner(f"Generating {option}..."):
