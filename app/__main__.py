@@ -31,11 +31,13 @@ if __name__ == '__main__':
 
     if option == "video":
         video_range = st.sidebar.slider("How many video frames?", 3, 30, 5)
+    else:
+        image_grids = st.sidebar.slider("How many image grids?", 1, 12, 6)
 
     if st.sidebar.button("Click here to generate!"):
         with st.spinner(f"Generating {option}..."):
             if option == "image":
-                save_samples(generator)
+                save_samples(generator, None, image_grids)
                 filename = get_files_in_dir(SAVE_DIR)[0]
             else:
                 for idx in range(video_range):

@@ -11,8 +11,8 @@ def denorm(img_tensors):
     return img_tensors * STATS[1][0] + STATS[0][0]
 
 
-def save_samples(generator, index=None):
-    latent_tensors = torch.randn(64, LATENT_SIZE, 1, 1, device=torch.device('cpu'))
+def save_samples(generator, index=None, tensor_size=8):
+    latent_tensors = torch.randn(tensor_size*tensor_size, LATENT_SIZE, 1, 1, device=torch.device('cpu'))
 
     fake_images = generator(latent_tensors)
 
