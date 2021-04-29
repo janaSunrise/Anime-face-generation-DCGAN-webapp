@@ -38,5 +38,10 @@ def generate_video(generated_location, save_filename):
 
     # *"MP4V" was planned to use for MP4, unfortunately browsers don't support it, Hence used VP80 for `.webm`
     out = cv2.VideoWriter(save_filename, cv2.VideoWriter_fourcc(*"VP80"), 1, (530, 530))
-    [out.write(cv2.imread(fname)) for fname in files]
+
+    # Use a forloop instead of a list comprehension, To delete the file on the write operation. Saves memory.
+    for fname in files:
+        out.write(cv2.imread(fname))
+        os.remove(fname)
+
     out.release()
