@@ -1,6 +1,7 @@
 import os
 
 import cv2
+import streamlit as st
 import torch
 from torchvision.utils import save_image
 
@@ -24,6 +25,7 @@ def save_samples(generator, index=None, tensor_size=8):
     save_image(denorm(fake_images), os.path.join(SAVE_DIR, fake_fname), nrow=8)
 
 
+@st.cache(suppress_st_warning=True, ttl=5, max_entries=128)
 def get_files_in_dir(directory):
     files = [os.path.join(directory, f) for f in os.listdir(directory) if directory in f]
     files.sort()
