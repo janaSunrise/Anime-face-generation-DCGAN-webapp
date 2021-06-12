@@ -27,7 +27,7 @@ def save_samples(generator, index=None, tensor_size=8):
 
 @st.cache(suppress_st_warning=True, ttl=5, max_entries=128)
 def get_files_in_dir(directory):
-    files = [os.path.join(directory, f) for f in os.listdir(directory) if directory in f]
+    files = [os.path.join(directory, file) for file in os.listdir(directory) if directory in file]
     files.sort()
 
     return files
