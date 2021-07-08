@@ -7,12 +7,12 @@
 This project uses `pipenv` for dependency management. You need to ensure that you have `pipenv`
 installed on your system.
 
-Here's how to install the dependencies, and get started.
+Here's how to quickly install the dependencies, and quickstart the web application:
 
 - Install it using **`pipenv sync -d`**
 - Once done, run the webapp using **`pipenv run start`**
 
-And It'll start on Port 8501 by default, plus it opens the site too on webbrowser.
+And it'll start on Port `8501` by default and also it opens the site too on webbrowser.
 
 ## Contributing
 
@@ -29,6 +29,6 @@ We love people's support in growing and improving. Be sure to leave a ⭐️ if 
 also be sure to contribute, if you're interested!
 
 <div align="center">
-Made by Sunrit Jana with <3
+Made by Sunrit Jana with ♥
 </div>
 
