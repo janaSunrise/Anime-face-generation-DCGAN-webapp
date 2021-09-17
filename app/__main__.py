@@ -13,14 +13,18 @@ from .utils import save_samples, get_files_in_dir, generate_video
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 # Load and evaluate models
-generator.load_state_dict(torch.load("app/models/generator_model.bin", map_location=torch.device('cpu')))
-discriminator.load_state_dict(torch.load("app/models/discriminator_model.bin", map_location=torch.device('cpu')))
+generator.load_state_dict(
+    torch.load("app/models/generator_model.bin", map_location=torch.device("cpu"))
+)
+discriminator.load_state_dict(
+    torch.load("app/models/discriminator_model.bin", map_location=torch.device("cpu"))
+)
 
 # Finally, Evaluate them
 generator.eval()
 discriminator.eval()
 
-# -- The views -- #
+# Main view
 st.title("Anime Art generation")
 st.header("Anime face image and video generation using Deep Convolutional GANs")
 
@@ -29,13 +33,17 @@ st.header("\n\n")
 
 if __name__ == "__main__":
     # Option bar
-    option = st.sidebar.selectbox("What do you want to generate?", ("Image", "Video")).lower()
+    option = st.sidebar.selectbox(
+        "What do you want to generate?", ("Image", "Video")
+    ).lower()
 
     # Check the option chose
     if option == "video":
         video_range = st.sidebar.slider("How many video frames?", 3, 30, 5)
     else:
-        st.sidebar.markdown("**Note:** that the image might be a bit broken due to the shape customization.")
+        st.sidebar.markdown(
+            "**Note:** that the image might be a bit broken due to the shape customization."
+        )
         image_grids = st.sidebar.slider("How many image grids?", 1, 12, 8)
 
     # Generation logic
@@ -66,6 +74,6 @@ if __name__ == "__main__":
                 vid_filename = "anime_timelapse.webm"
                 generate_video(SAVE_DIR, vid_filename)
 
-                video_file = open(vid_filename, 'rb')
+                video_file = open(vid_filename, "rb")
                 video_bytes = video_file.read()
                 st.video(video_bytes)

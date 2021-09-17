@@ -13,7 +13,9 @@ def denorm(img_tensors):
 
 
 def save_samples(generator, index=None, tensor_size=8):
-    latent_tensors = torch.randn(tensor_size*tensor_size, LATENT_SIZE, 1, 1, device=torch.device('cpu'))
+    latent_tensors = torch.randn(
+        tensor_size * tensor_size, LATENT_SIZE, 1, 1, device=torch.device("cpu")
+    )
 
     fake_images = generator(latent_tensors)
 
@@ -27,7 +29,11 @@ def save_samples(generator, index=None, tensor_size=8):
 
 @st.cache(suppress_st_warning=True, ttl=5, max_entries=128)
 def get_files_in_dir(directory):
-    files = [os.path.join(directory, file) for file in os.listdir(directory) if directory in file]
+    files = [
+        os.path.join(directory, file)
+        for file in os.listdir(directory)
+        if directory in file
+    ]
     files.sort()
 
     return files
